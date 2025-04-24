@@ -49,6 +49,9 @@ public class BlogService {
         return modelMapper.map(blogRepository.save(blog), BlogDto.class);
     }
 
+
+//     // uncomment this and comment the local upload code
+//    //for cloud storage service
 //    public BlogDto saveBlog(BlogDto blogDto, MultipartFile image) throws IOException {
 //        // Upload the image and store it in server
 //        //for cloud storage

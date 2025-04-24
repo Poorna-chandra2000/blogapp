@@ -38,8 +38,8 @@ public class WebSecurityConfig {
                         .anyRequest().authenticated())
                 .csrf(csrfConfig -> csrfConfig.disable())
                 .sessionManagement(sessionConfig -> sessionConfig
-                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-                //.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);//theCustom nearer filter
 //                .oauth2Login(oauth2Config -> oauth2Config
 //                        .failureUrl("/login?error=true")
 //                        .successHandler(oAuth2SuccessHandler)

@@ -1,5 +1,6 @@
 package com.poorna.blogapp.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,5 +28,10 @@ public class BlogContents {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="ParentBlogId")
     private Blog blog;
+
+
+    @OneToMany(mappedBy = "blogcomment",fetch = FetchType.LAZY,orphanRemoval = true)
+    @JsonIgnore
+    private List<Comments> comments;
 
 }
