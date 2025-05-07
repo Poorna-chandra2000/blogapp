@@ -1,0 +1,84 @@
+You only need to modify:
+
+LoginDto → Rename email to a more general name like identifier.
+
+AuthService.login() → Update it to fetch the user using either email or username.
+
+UserService.loadUserByUsername() → Update this to support both email and username.
+
+Optionally: update UserRepository to support finding by both.
+
+✅ Step-by-step Changes
+1. Update LoginDto.java
+Change from:
+
+java
+
+private String email;
+To:
+
+java
+
+private String identifier; // could be email or username
+
+👇
+2. Update AuthService.login()
+Update this line:
+
+java
+
+Authentication authentication = authenticationManager.authenticate(
+    new UsernamePasswordAuthenticationToken(loginDto.getEmail(), loginDto.getPassword())
+);
+To:
+
+java
+
+Edit
+Authentication authentication = authenticationManager.authenticate(
+    new UsernamePasswordAuthenticationToken(loginDto.getIdentifier(), loginDto.getPassword())
+);
+
+👇
+3. Update UserService.loadUserByUsername()
+Replace this:
+
+java
+
+Edit
+return userRepository.findByEmail(username)
+    .orElseThrow(() -> new BadCredentialsException("User with email "+ username +" not found"));
+With:
+
+java
+Copy
+Edit
+return userRepository.findByEmail(username)
+        .or(() -> userRepository.findByUsername(username)) // fallback
+        .orElseThrow(() -> new BadCredentialsException("User with email or username " + username + " not found"));
+
+👇
+4. Update UserRepository.java
+Ensure it has:
+
+java
+Copy
+Edit
+Optional<User> findByEmail(String email);
+Optional<User> findByUsername(String username);
+
+
+5. ✅ Frontend Changes
+Change the JSON field from email to identifier:
+
+json
+Copy
+Edit
+{
+  "identifier": "poorna@example.com", // or just "poorna"
+  "password": "your_password"
+}
+✅ Done!
+After these changes, your system will support logging in with either email or username using the same endpoint.
+
+Would you like me to generate the updated LoginDto.java and modified parts as complete code blocks for copy-paste?

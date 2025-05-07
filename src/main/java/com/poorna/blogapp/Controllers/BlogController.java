@@ -10,6 +10,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -27,6 +28,7 @@ public class BlogController {
     private final GCSService gcsService;
 
     private final FileService fileService;
+
 
    @GetMapping("/getall")
    ResponseEntity<List<BlogDto>> getAllBlog(){

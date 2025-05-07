@@ -95,6 +95,54 @@
 			<version>0.12.6</version>
 			<scope>runtime</scope>
 		</dependency>
+
+<!--		&lt;!&ndash; WebSockets and also private notification or messaging &ndash;&gt;-->
+<!--		&lt;!&ndash; Spring WebSocket for WebSocket support &ndash;&gt;-->
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--			<artifactId>spring-boot-starter-websocket</artifactId>-->
+<!--		</dependency>-->
+
+<!--		&lt;!&ndash; Spring Messaging for STOMP support &ndash;&gt;-->
+
+<!--		<dependency>-->
+<!--			<groupId>org.springframework</groupId>-->
+<!--			<artifactId>spring-messaging</artifactId>-->
+<!--			<version>7.0.0-M4</version>-->
+<!--		</dependency>-->
+
+
+
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.security</groupId>-->
+<!--			<artifactId>spring-security-messaging</artifactId>-->
+<!--		</dependency>-->
+
+		<!-- Spring Boot Starter WebSocket (for WebSocket support) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
+
+		<!-- Spring Messaging (for STOMP support) -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-messaging</artifactId>
+			<version>6.2.5</version> <!-- Use a stable version matching your Spring Boot version -->
+		</dependency>
+
+		<!-- Spring Security Messaging (for Security with STOMP) -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-messaging</artifactId>
+		</dependency>
+
+<!--		&lt;!&ndash; If you are using SockJS for fallback support &ndash;&gt;-->
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.web.socket</groupId>-->
+<!--			<artifactId>spring-websocket</artifactId>-->
+<!--		</dependency>-->
+
 	</dependencies>
 
 	<build>

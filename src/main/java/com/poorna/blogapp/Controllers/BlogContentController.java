@@ -49,4 +49,6 @@ public class BlogContentController {
         return ResponseEntity.ok(blogContentService.getAll());
     }
 
+
+
 }
